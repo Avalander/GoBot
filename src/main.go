@@ -45,6 +45,6 @@ func onMessage(session *discordgo.Session, message *discordgo.MessageCreate) {
 	}
 
 	if message.Content == "ping" {
-		session.ChannelMessageSend(message.ChannelID, "Pong!")
+		session.ChannelMessageSend(message.ChannelID, ":twipbbt:")
 	}
 }
