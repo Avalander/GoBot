@@ -5,11 +5,6 @@ import (
 	"github.com/Avalander/GoBot/src/modules/uptime"
 )
 
-const MINUTE = 60
-const HOUR = MINUTE * 60
-const DAY = HOUR * 24
-const WEEK = DAY * 7
-
 func init() {
 	fmt.Println("Hello")
 }
