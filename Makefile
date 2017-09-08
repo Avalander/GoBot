@@ -2,7 +2,13 @@ install-deps:
 	go get github.com/bwmarrin/discordgo
 
 build:
-	cd src && go build -o ../.build/gobot
+	go build -o .build/gobot src/main.go
+
+build-test:
+	go build -o .build/deleteme src/deleteme.go
+
+run-test: clean build-test
+	.build/deleteme
 
 clean:
 	rm .build/*
