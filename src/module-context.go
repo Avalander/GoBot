@@ -3,6 +3,7 @@ package main
 import (
 	"GoBot/src/modules/debug"
 	"GoBot/src/modules/ping"
+	"GoBot/src/modules/trixie"
 	"GoBot/src/modules/uptime"
 )
 
@@ -19,7 +20,9 @@ func init() {
 	commands = append(commands,
 		command{debug.CanHandle, debug.DebugMessage},
 		command{uptime.CanHandle, uptime.SendUptime},
-		command{ping.CanHandle, ping.SendPong})
+		command{ping.CanHandle, ping.SendPong},
+		command{trixie.CanHandle, trixie.SendQuote},
+	)
 }
 
 func Handle(message string, SendMessage func(string)) {

@@ -14,4 +14,5 @@ func main() {
 	}
 	Handle("uptime", sendMessage)
 	Handle("ping", sendMessage)
+	Handle("trixie", sendMessage)
 }
