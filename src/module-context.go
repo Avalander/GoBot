@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/Avalander/GoBot/src/modules/debug"
-	"github.com/Avalander/GoBot/src/modules/ping"
-	"github.com/Avalander/GoBot/src/modules/uptime"
+	"GoBot/src/modules/debug"
+	"GoBot/src/modules/ping"
+	"GoBot/src/modules/uptime"
 )
 
 type command struct {
