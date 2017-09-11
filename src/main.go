@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -35,7 +36,7 @@ func main() {
 	fmt.Println("Bot is up and running.")
 	signalClose := make(chan os.Signal, 1)
 	signal.Notify(signalClose, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
-	<- signalClose
+	<-signalClose
 	dg.Close()
 }
 
@@ -44,7 +45,7 @@ func onMessage(session *discordgo.Session, message *discordgo.MessageCreate) {
 		return
 	}
 
-	if message.Content == "ping" {
-		session.ChannelMessageSend(message.ChannelID, "<:twipbbt:351795248961159168>")
-	}
+	Handle(message.Content, func(text string) {
+		session.ChannelMessageSend(message.ChannelID, text)
+	})
 }

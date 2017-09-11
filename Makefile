@@ -3,7 +3,7 @@ install-deps:
 
 build:
 	mkdir -p .build
-	go build -o .build/gobot src/main.go
+	go build -o .build/gobot src/main.go src/module-context.go
 
 build-test:
 	mkdir -p .build
