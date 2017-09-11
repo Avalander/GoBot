@@ -13,4 +13,5 @@ func main() {
 		fmt.Println(text)
 	}
 	Handle("uptime", sendMessage)
+	Handle("ping", sendMessage)
 }
