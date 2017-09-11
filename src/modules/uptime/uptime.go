@@ -2,7 +2,6 @@ package uptime
 
 import (
 	"fmt"
-	"strconv"
 	"time"
 )
 
@@ -25,8 +24,8 @@ func CanHandle(message string) bool {
 }
 
 func SendUptime(message string, SendMessage func(string)) {
-	i, _ := strconv.ParseInt("1504010580", 10, 64)
-	uptime := int64(time.Now().Sub(time.Unix(i, 0)).Seconds())
+	//i, _ := strconv.ParseInt("1504010580", 10, 64)
+	uptime := int64(time.Now().Sub(start).Seconds())
 	text := fmt.Sprintf("I've been up for %d weeks, %d days, %d hours, %d minutes and %d seconds.",
 		convertDurationTo(week, &uptime),
 		convertDurationTo(day, &uptime),
