@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Avalander/GoBot/src/modules/debug"
 	"github.com/Avalander/GoBot/src/modules/ping"
 	"github.com/Avalander/GoBot/src/modules/uptime"
 )
@@ -16,6 +17,7 @@ var (
 
 func init() {
 	commands = append(commands,
+		command{debug.CanHandle, debug.DebugMessage},
 		command{uptime.CanHandle, uptime.SendUptime},
 		command{ping.CanHandle, ping.SendPong})
 }
