@@ -26,11 +26,11 @@ func CanHandle(message string) bool {
 func SendUptime(message string, SendMessage func(string)) {
 	//i, _ := strconv.ParseInt("1504010580", 10, 64)
 	uptime := int64(time.Now().Sub(start).Seconds())
-	text := fmt.Sprintf("I've been up for %d weeks, %d days, %d hours, %d minutes and %d seconds.",
-		convertDurationTo(week, &uptime),
-		convertDurationTo(day, &uptime),
-		convertDurationTo(hour, &uptime),
-		convertDurationTo(minute, &uptime),
+	text := fmt.Sprintf("I've been up for %s%s%s%s%d seconds.",
+		durationToString(convertDurationTo(week, &uptime), "%d weeks, "),
+		durationToString(convertDurationTo(day, &uptime), "%d days, "),
+		durationToString(convertDurationTo(hour, &uptime), "%d hours, "),
+		durationToString(convertDurationTo(minute, &uptime), "%d minutes and "),
 		convertDurationTo(second, &uptime))
 	SendMessage(text)
 }
@@ -39,4 +39,11 @@ func convertDurationTo(name int64, value *int64) int {
 	newValue := *value / name
 	*value = *value % name
 	return int(newValue)
+}
+
+func durationToString(value int, template string) string {
+	if value == 0 {
+		return ""
+	}
+	return fmt.Sprintf(template, value)
 }
