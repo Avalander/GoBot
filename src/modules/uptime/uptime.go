@@ -20,7 +20,11 @@ func init() {
 	start = time.Now()
 }
 
-func SendUptime(SendMessage func(string)) {
+func CanHandle(message string) bool {
+	return message == "uptime"
+}
+
+func SendUptime(message string, SendMessage func(string)) {
 	i, _ := strconv.ParseInt("1504010580", 10, 64)
 	uptime := int64(time.Now().Sub(time.Unix(i, 0)).Seconds())
 	text := fmt.Sprintf("I've been up for %d weeks, %d days, %d hours, %d minutes and %d seconds.",

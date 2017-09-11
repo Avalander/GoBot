@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/Avalander/GoBot/src/modules/uptime"
 )
 
 func init() {
@@ -14,5 +12,5 @@ func main() {
 	sendMessage := func(text string) {
 		fmt.Println(text)
 	}
-	uptime.SendUptime(sendMessage)
+	Handle("uptime", sendMessage)
 }
