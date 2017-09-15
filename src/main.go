@@ -6,11 +6,13 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+
 	"github.com/bwmarrin/discordgo"
 )
 
 var (
 	Token string
+	Type  int64
 )
 
 func init() {
@@ -19,6 +21,11 @@ func init() {
 }
 
 func main() {
+	if os.Args[1] == "shell" {
+		Type = 1
+	} else {
+		Type = 0
+	}
 	dg, err := discordgo.New("Bot " + Token)
 	if err != nil {
 		fmt.Println("Error starting GoBot,", err)
@@ -35,7 +42,7 @@ func main() {
 	fmt.Println("Bot is up and running.")
 	signalClose := make(chan os.Signal, 1)
 	signal.Notify(signalClose, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
-	<- signalClose
+	<-signalClose
 	dg.Close()
 }
 
